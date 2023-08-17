@@ -14,6 +14,8 @@ func CreateItem(item store.Item) (store.Item, error) {
 
 	key := slug.Make(item.Title)
 
+	log.Printf("Creating '%s'", item.Title)
+
 	store.ListInstance.Set(key, item)
 	newItem, error := store.ListInstance.Get(item.Title)
 
@@ -21,7 +23,6 @@ func CreateItem(item store.Item) (store.Item, error) {
 		return store.Item{}, errors.New("Created item could not be verified.")
 	}
 
-	log.Printf("Item %s created.", newItem.Title)
 
 	return newItem, nil
 }
