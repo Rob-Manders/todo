@@ -8,11 +8,9 @@
   <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
-  <div class="container-fluid">
-    {{template "header"}}
-    {{template "page"}}
-    {{template "footer"}}
-  </div>
+  {{template "header"}}
+  {{template "page" .}}
+  {{template "footer"}}
 </body>
 </html>
 {{end}}
