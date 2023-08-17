@@ -8,7 +8,7 @@ import (
 )
 
 type Request struct {
-	Title string `json:"title"`
+	Key string `json:"key"`
 }
 
 func DeleteItem(w http.ResponseWriter, r *http.Request) {
@@ -23,7 +23,7 @@ func DeleteItem(w http.ResponseWriter, r *http.Request) {
 
 	if decodeError != nil { w.WriteHeader(500) }
 
-	error := models.DeleteItem(request.Title)
+	error := models.DeleteItem(request.Key)
 
 	if error != nil { w.WriteHeader(500) }
 }

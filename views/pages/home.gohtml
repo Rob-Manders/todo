@@ -1,5 +1,16 @@
 {{define "page"}}
   {{range $index, $item := .}}
-    <p>{{ $item }}</p>
+    <div class="item">
+      <p class="item__title">{{ $item.Title }}</p>
+      <button class="item__delete-button" data-key="{{ $index }}">Delete</button>
+    </div> 
   {{end}}
+
+  <form class="form">
+    <label class="form__label" for="item-input">Create New Item</label>
+    <div class="form__inner">
+      <input class="form__input" id="item-input" type="text" name="item-input">
+      <button class="form__button" id="create-item-button">Create</button>
+    </div>
+  </form>
 {{end}}

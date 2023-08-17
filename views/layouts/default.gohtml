@@ -9,8 +9,18 @@
 </head>
 <body>
   {{template "header"}}
-  {{template "page" .}}
+
+  <main>
+    <div class="container">
+
+      {{template "page" .}}
+      
+    </div>
+  </main>
+
   {{template "footer"}}
+
+  <script src="/static/script.js"></script>
 </body>
 </html>
 {{end}}

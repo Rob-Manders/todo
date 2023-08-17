@@ -21,8 +21,7 @@ func main() {
 
 	// Frontend Routes
 	router.HandleFunc("/", controllers.Home)
-	router.HandleFunc("/faq", controllers.Faq)
-	router.HandleFunc("/contact", controllers.Contact)
+	router.HandleFunc("/about", controllers.About)
 
 	// API
 	router.HandleFunc("/api/create", controllers.CreateItem)
