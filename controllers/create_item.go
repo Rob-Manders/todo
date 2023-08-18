@@ -11,6 +11,7 @@ import (
 func CreateItem(w http.ResponseWriter, r *http.Request) {
 	defer r.Body.Close()
 
+	r.Body = http.MaxBytesReader(w, r.Body, 1 << 20)
 	bytes, readError := io.ReadAll(r.Body)
 
 	if readError != nil {
