@@ -5,6 +5,16 @@ const deleteButtons = document.querySelectorAll('.item__delete-button')
 
 const url = 'https://localhost:3000'
 
+function escapeString(string) {
+	const characters = {
+		'&': '&amp;',
+		'<': '&lt;',
+		'>': '&gt;',
+	}
+
+	return string.replace(/[&<>]/g, (character) => characters[character] || character)
+}
+
 async function preFlight(path, method) {
 	await fetch(`${url}${path}`, {
 		method: 'OPTIONS',
@@ -29,9 +39,11 @@ async function makeRequest(path, method, data) {
 async function postItem(event) {
 	event.preventDefault()
 
+	if (!itemInput.value) return
+
 	const path = '/api/create'
 	const data = {
-		title: itemInput.value,
+		title: escapeString(itemInput.value),
 		done: false
 	}
 

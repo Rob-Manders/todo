@@ -15,7 +15,7 @@ func Serve(router *mux.Router, tlsConfig *tls.Config) {
 	// Initialise HTTPS server with timeouts and TLS configuration:
 	httpsServer := &http.Server{
 		Addr: ":3000",
-		Handler: CorsHandler(middleware.TrimPath(router)),
+		Handler: Headers(CorsHandler(middleware.TrimPath(router))),
 		TLSConfig: tlsConfig,
 		TLSNextProto: make(map[string]func(*http.Server, *tls.Conn, http.Handler), 0),
 		ReadTimeout: 5 * time.Second,
@@ -44,7 +44,7 @@ func Serve(router *mux.Router, tlsConfig *tls.Config) {
 }
 
 // Redirect HTTP requests to HTTPS server:
-// Doesdn't work...
+// Doesn't work...
 
 // go func() {
 // 	httpServer := &http.Server {
