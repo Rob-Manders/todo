@@ -14,6 +14,6 @@ func Home(w http.ResponseWriter, r *http.Request) {
 
 	items := store.ListInstance.Items
 
-	w.Header().Set("Content-Type", "text/html")
+	w.Header().Add("Content-Type", "text/html")
 	util.Must(homeView.Render(w, items))
 }
